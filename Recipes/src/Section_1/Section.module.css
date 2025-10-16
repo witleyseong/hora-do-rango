@@ -1,25 +1,35 @@
-.block{
+.block {
     display: flex;
     justify-content: space-around;
     background-color: beige;
-    
-    
+
+
+
 }
 
-.SectionOne{
+
+
+/*all recepies button */
+.AllBo{
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+}
+
+.SectionOne {
     position: relative;
     width: 500px;
 }
 
-h1{
+h1 {
     font-size: 50px;
 }
 
-p{
+p {
     font-size: 25px;
 }
 
-.Button{
+.Button {
     margin-top: 100px;
     margin-left: 180px;
     font-size: 30px;
@@ -30,19 +40,20 @@ p{
     padding: 20px;
 }
 
-.Button:hover{
+.Button:hover {
     background-color: white;
     color: black;
     cursor: pointer;
     transition: 0.5s ease-in-out;
 
 }
-.container{
-  
+
+.container {
+
     position: relative;
 }
 
-.Cheff{
+.Cheff {
     height: 600px;
     width: auto;
     border-radius: 30px;
@@ -54,15 +65,16 @@ p{
     margin-top: 90px;
 }
 
-.H2{
+.H2 {
     font-size: 30px;
 }
-.Email{
+
+.Email {
     margin-top: 30px;
     font-size: 25px;
 }
 
-input{
+input {
     background-color: beige;
     height: 15px;
     padding: 20px;
@@ -71,7 +83,7 @@ input{
     width: 250px;
 }
 
-button{
+button {
     font-size: 15px;
     font-weight: 100px;
     background-color: rgb(131, 36, 36);
@@ -80,7 +92,7 @@ button{
     padding: 20px;
 }
 
-button:hover{
+button:hover {
     background-color: white;
     color: black;
     cursor: pointer;

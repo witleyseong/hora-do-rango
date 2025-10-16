@@ -1,0 +1,19 @@
+.Bias{
+    display: grid;
+    justify-content: space-around;
+    padding: 30px;
+}
+
+.Boxes{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+    background-color: beige;
+    border-radius: 30px;
+}
+
+.PES{
+    text-align: center;
+    justify-content: center;
+    margin-top: 200px;
+}

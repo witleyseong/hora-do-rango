@@ -2,6 +2,7 @@ import React from "react";
 import styles from './Nav.module.css'
 import logo from "../assets/logo.png";
 import { FaInstagram, FaFacebook, FaYoutube, FaTwitter  } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function Navbar() {
     return (
@@ -15,9 +16,9 @@ function Navbar() {
                     <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
                 </div>
                 <div className={styles.Navbar}>
-                    <a className={styles.NavItem} href="#">Recipes</a>
-                    <a className={styles.NavItem} href="#">About</a>
-                    <a className={styles.NavItem} href="#">Contact</a>
+                    <Link className={styles.NavItem} to="/Recipes">Recipes</Link>
+                    <Link className={styles.NavItem} to="/About">About me</Link>
+                    <Link className={styles.NavItem} to="/">Home</Link>
                 </div>
             </div>
         </>

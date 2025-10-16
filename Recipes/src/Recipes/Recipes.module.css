@@ -1,0 +1,17 @@
+.cards {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 50px;
+}
+.recipes{
+    background-color: beige;
+    width: 370px;
+    height: 450px;
+    text-align: center;
+    border-radius: 30px;
+}
+.recipes:hover{
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
