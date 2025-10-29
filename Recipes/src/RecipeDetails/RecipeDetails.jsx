@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import torta from "../assets/torta.png";
 import sushi from "../assets/sushi.png";
 import pho from "../assets/beef_pho.png";
+import mocoto from "../assets/mocoto.png";
 import styles from "./RecipeDetails.module.css"
 
 function RecipeDetails() {
@@ -84,7 +85,39 @@ function RecipeDetails() {
                 "Monte o prato: coloque o macarrão em uma tigela, adicione fatias finas de carne crua e despeje o caldo bem quente por cima — o calor do caldo vai cozinhar a carne.",
                 "Finalize com brotos, ervas frescas e limão a gosto. Sirva com molho hoisin e sriracha à parte, se desejar."
             ]
-        }
+        },
+        "caldo-de-mocoto": {
+            title: "Caldo de Mocotó Tradicional do Mocotó",
+            image: mocoto,
+            ingredients: [
+                "1 mocotó (pé de boi ou mão de vaca), bem limpo e cortado em pedaços",
+                "Água suficiente para o cozimento",
+                "1 cebola grande picada",
+                "2 tomates picados",
+                "1 pimentão picado",
+                "4 dentes de alho amassados",
+                "1 pimenta (a gosto, apenas para realçar o sabor)",
+                "2 colheres de sopa de vinagre",
+                "1 colher de chá de cominho",
+                "1 colher de chá de colorau (urucum)",
+                "Sal a gosto",
+                "300 g de mandioca (macaxeira) cozida e amassada",
+                "1/2 maço de coentro fresco picado grosseiramente",
+                "1/2 maço de cebolinha (parte branca e verde) picada"
+            ],
+            steps: [
+                "link to watch: https://www.youtube.com/watch?v=8Bsntsasysk",
+                "Lave bem o mocotó e cozinhe em bastante água até que a carne fique bem macia. Retire os ossos e reserve o caldo do cozimento.",
+                "No liquidificador, bata cebola, tomate, pimentão, alho, pimenta, vinagre, cominho e colorau. Adicione um pouco do caldo do mocotó para ajudar a bater.",
+                "Em uma panela grande, aqueça o tempero batido e refogue até soltar o aroma.",
+                "Adicione o mocotó cozido e o caldo reservado. Deixe cozinhar em fogo baixo para apurar o sabor.",
+                "Acrescente a mandioca cozida e amassada, mexendo bem até o caldo engrossar naturalmente.",
+                "Ajuste o sal a gosto e cozinhe por alguns minutos até atingir a textura desejada.",
+                "Desligue o fogo e adicione o coentro e a cebolinha no final, mexendo suavemente para preservar o frescor.",
+                "Sirva o caldo quente, acompanhado de farinha, pimenta e um toque de limão, se desejar."
+            ]
+        },
+
 
 
     };
