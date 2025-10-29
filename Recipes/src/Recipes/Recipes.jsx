@@ -4,6 +4,7 @@ import sushi from "../assets/sushi.png"
 import pho from "../assets/beef_pho.png"
 import coming from "../assets/comming.png"
 import CompMeal from "../Meal/CompMeal"
+import mocoto from "../assets/mocoto.png"
 import styles from './Recipes.module.css'
 
 import { Link } from "react-router-dom"
@@ -40,9 +41,11 @@ function Recipes() {
 
             <div className={styles.cards}>
                 <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="torta" />
+                    <Link to="/RecipeDetails/Mocoto">
+                    <img src={mocoto} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="torta" />
                     <h2>Coming Soon</h2>
                     <CompMeal />
+                    </Link>
                 </div>
                 <div className={styles.recipes}>
                     <img src={coming} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="sushi" />
