@@ -41,7 +41,7 @@ function Recipes() {
 
             <div className={styles.cards}>
                 <div className={styles.recipes}>
-                    <Link to="/RecipeDetails/Mocoto">
+                    <Link to="/RecipeDetails/caldo-de-mocoto">
                         <img src={mocoto} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="torta" />
                         <h2>Coming Soon</h2>
                         <CompMeal />
