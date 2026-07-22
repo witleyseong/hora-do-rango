@@ -5,14 +5,11 @@ import {
     addDoc,
     updateDoc,
     deleteDoc,
-    getDoc,
-    setDoc,
     serverTimestamp,
     orderBy,
     query,
 } from "firebase/firestore";
 import { db } from "./firebaseConfig";
-import { receitasAntigas } from "./receitasAntigas";
 
 const receitasRef = collection(db, "receitas");
 
@@ -90,46 +87,4 @@ export async function confirmAndDeleteReceita(receita) {
         window.alert("Não foi possível excluir a receita. Tente novamente.");
         return false;
     }
-}
-
-// Admin-only, one-off tool: copies the recipes that used to be hardcoded in
-// RecipeDetails.jsx into Firestore, using the same slugs as document IDs so
-// existing /RecipeDetails/:slug links keep working. Safe to run more than
-// once — existing docs are updated in place, keeping their original
-// createdAt. Once you've confirmed the data looks right in Firestore, this
-// function, the "Importar receitas antigas" button and receitasAntigas.js
-// can all be deleted.
-export async function migrarReceitasAntigas(onProgress) {
-    let created = 0;
-    let updated = 0;
-    const errors = [];
-
-    for (const receita of receitasAntigas) {
-        const { slug, ...fields } = receita;
-        const ref = doc(db, "receitas", slug);
-        try {
-            const existing = await getDoc(ref);
-            if (existing.exists()) {
-                await setDoc(ref, {
-                    ...fields,
-                    createdAt: existing.data().createdAt ?? serverTimestamp(),
-                    updatedAt: serverTimestamp(),
-                });
-                updated += 1;
-            } else {
-                await setDoc(ref, {
-                    ...fields,
-                    createdAt: serverTimestamp(),
-                    updatedAt: serverTimestamp(),
-                });
-                created += 1;
-            }
-            onProgress?.({ slug, status: "ok", created, updated, errors });
-        } catch (error) {
-            errors.push({ slug, message: error.message });
-            onProgress?.({ slug, status: "error", created, updated, errors });
-        }
-    }
-
-    return { created, updated, errors };
 }
