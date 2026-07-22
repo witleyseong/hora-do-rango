@@ -1,12 +1,31 @@
-.containner{
+.containner {
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 0 24px;
 }
 
-.incont{
-    background-color: beige;
-    padding: 50px;
-    margin-top: 90px;
-    border-radius: 30px;
+.incont {
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+    padding: 40px;
+    margin: 48px 0;
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 720px;
+}
+
+.incont h3 {
+    color: var(--color-primary-hover);
+    margin-top: 32px;
+}
+
+.incont li {
+    margin-bottom: 6px;
+    line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+    .incont {
+        padding: 24px;
+    }
 }

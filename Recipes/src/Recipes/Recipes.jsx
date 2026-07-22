@@ -18,21 +18,21 @@ function Recipes() {
             <div className={styles.cards}>
                 <div className={styles.recipes}>
                     <Link to="/RecipeDetails/torta-louca">
-                        <img src={torta} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="torta" />
+                        <img src={torta} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="torta" />
                         <h2>TORTA LOUCA LETICIA</h2>
                         <CompMeal />
                     </Link>
                 </div>
                 <div className={styles.recipes}>
                     <Link to="/RecipeDetails/beef-pho">
-                        <img src={pho} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="sushi" />
+                        <img src={pho} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="sushi" />
                         <h2>BEEF PHO</h2>
                         <CompMeal />
                     </Link>
                 </div>
                 <div className={styles.recipes}>
                     <Link to="/RecipeDetails/sushi">
-                        <img src={sushi} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="pho" />
+                        <img src={sushi} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="pho" />
                         <h2>SUSHI</h2>
                         <CompMeal />
                     </Link>
@@ -42,36 +42,18 @@ function Recipes() {
             <div className={styles.cards}>
                 <div className={styles.recipes}>
                     <Link to="/RecipeDetails/caldo-de-mocoto">
-                        <img src={mocoto} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="torta" />
+                        <img src={mocoto} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="torta" />
                         <h2>Coming Soon</h2>
                         <CompMeal />
                     </Link>
                 </div>
                 <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="sushi" />
+                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="sushi" />
                     <h2>Coming Soon</h2>
                     <CompMeal />
                 </div>
                 <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="pho" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-            </div>
-
-            <div className={styles.cards}>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="torta" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="sushi" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="pho" />
+                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="pho" />
                     <h2>Coming Soon</h2>
                     <CompMeal />
                 </div>
@@ -79,35 +61,17 @@ function Recipes() {
 
             <div className={styles.cards}>
                 <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="torta" />
+                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="torta" />
                     <h2>Coming Soon</h2>
                     <CompMeal />
                 </div>
                 <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="sushi" />
+                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="sushi" />
                     <h2>Coming Soon</h2>
                     <CompMeal />
                 </div>
                 <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="pho" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-            </div>
-
-            <div className={styles.cards}>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="torta" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="sushi" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="pho" />
+                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="pho" />
                     <h2>Coming Soon</h2>
                     <CompMeal />
                 </div>
@@ -115,35 +79,17 @@ function Recipes() {
 
             <div className={styles.cards}>
                 <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="torta" />
+                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="torta" />
                     <h2>Coming Soon</h2>
                     <CompMeal />
                 </div>
                 <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="sushi" />
+                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="sushi" />
                     <h2>Coming Soon</h2>
                     <CompMeal />
                 </div>
                 <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="pho" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-            </div>
-
-            <div className={styles.cards}>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="torta" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="sushi" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="pho" />
+                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="pho" />
                     <h2>Coming Soon</h2>
                     <CompMeal />
                 </div>
@@ -151,17 +97,71 @@ function Recipes() {
 
             <div className={styles.cards}>
                 <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="torta" />
+                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="torta" />
                     <h2>Coming Soon</h2>
                     <CompMeal />
                 </div>
                 <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="sushi" />
+                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="sushi" />
                     <h2>Coming Soon</h2>
                     <CompMeal />
                 </div>
                 <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "270px", height: "250px", objectFit: "cover", borderRadius: "10px", padding: "10px" }} alt="pho" />
+                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="pho" />
+                    <h2>Coming Soon</h2>
+                    <CompMeal />
+                </div>
+            </div>
+
+            <div className={styles.cards}>
+                <div className={styles.recipes}>
+                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="torta" />
+                    <h2>Coming Soon</h2>
+                    <CompMeal />
+                </div>
+                <div className={styles.recipes}>
+                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="sushi" />
+                    <h2>Coming Soon</h2>
+                    <CompMeal />
+                </div>
+                <div className={styles.recipes}>
+                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="pho" />
+                    <h2>Coming Soon</h2>
+                    <CompMeal />
+                </div>
+            </div>
+
+            <div className={styles.cards}>
+                <div className={styles.recipes}>
+                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="torta" />
+                    <h2>Coming Soon</h2>
+                    <CompMeal />
+                </div>
+                <div className={styles.recipes}>
+                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="sushi" />
+                    <h2>Coming Soon</h2>
+                    <CompMeal />
+                </div>
+                <div className={styles.recipes}>
+                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="pho" />
+                    <h2>Coming Soon</h2>
+                    <CompMeal />
+                </div>
+            </div>
+
+            <div className={styles.cards}>
+                <div className={styles.recipes}>
+                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="torta" />
+                    <h2>Coming Soon</h2>
+                    <CompMeal />
+                </div>
+                <div className={styles.recipes}>
+                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="sushi" />
+                    <h2>Coming Soon</h2>
+                    <CompMeal />
+                </div>
+                <div className={styles.recipes}>
+                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="pho" />
                     <h2>Coming Soon</h2>
                     <CompMeal />
                 </div>

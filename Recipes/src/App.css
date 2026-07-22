@@ -1,3 +1,5 @@
-body{
-    background-color: #fdfdfd;
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 24px;
 }

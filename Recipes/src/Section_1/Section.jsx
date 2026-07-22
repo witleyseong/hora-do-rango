@@ -13,7 +13,7 @@ function Section1() {
                 <Cards />
             </div>
             <div className={styles.AllBo}>
-                <Link to='/Recipes'><button>All recipes</button></Link>
+                <Link to='/Recipes'><button className={styles.Button}>All recipes</button></Link>
             </div>
             <div className={styles.block}>
                 <div className={styles.SectionOne}>
@@ -31,7 +31,7 @@ function Section1() {
                 </div>
                 <div className={styles.Email}>
                     <input type="text" placeholder="Email address" />
-                    <button>Subscribe</button>
+                    <button className={styles.Button}>Subscribe</button>
                 </div>
             </div>
             <hr />
