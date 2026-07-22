@@ -1,175 +1,82 @@
-import React from "react";
-import torta from "../assets/torta.png"
-import sushi from "../assets/sushi.png"
-import pho from "../assets/beef_pho.png"
-import coming from "../assets/comming.png"
-import CompMeal from "../Meal/CompMeal"
-import mocoto from "../assets/mocoto.png"
-import styles from './Recipes.module.css'
-
-import { Link } from "react-router-dom"
+import React, { useState } from "react";
+import RecipeGrid from "../componentes/RecipeGrid";
+import RecipeListStatus from "../componentes/RecipeListStatus";
+import { useReceitas } from "../firebase/useReceitas";
+import { useAuth } from "../firebase/AuthContext";
+import { confirmAndDeleteReceita, migrarReceitasAntigas } from "../firebase/receitasService";
+import RecipeFormModal from "../Admin/RecipeFormModal";
+import formStyles from "../componentes/Form.module.css";
+import styles from "./Recipes.module.css";
 
 function Recipes() {
+    const { receitas, loading, error } = useReceitas();
+    const { isAdmin } = useAuth();
+    const [editing, setEditing] = useState(null);
+    const [adding, setAdding] = useState(false);
+    const [migrating, setMigrating] = useState(false);
+    const [migrationSummary, setMigrationSummary] = useState("");
+
+    async function handleMigrar() {
+        const confirmed = window.confirm(
+            "Importar as receitas antigas para o Firestore? Receitas já importadas serão apenas atualizadas, não duplicadas."
+        );
+        if (!confirmed) return;
+
+        setMigrating(true);
+        setMigrationSummary("");
+        try {
+            const { created, updated, errors } = await migrarReceitasAntigas();
+            setMigrationSummary(
+                `${created} receita(s) criada(s), ${updated} atualizada(s)` +
+                (errors.length ? `, ${errors.length} com erro.` : ".")
+            );
+        } catch {
+            setMigrationSummary("Falha ao importar as receitas antigas.");
+        }
+        setMigrating(false);
+    }
+
     return (
         <>
-            <div>
-                <h1 style={{ textAlign: "center" }}>All Recipes</h1>
-            </div>
-            <div className={styles.cards}>
-                <div className={styles.recipes}>
-                    <Link to="/RecipeDetails/torta-louca">
-                        <img src={torta} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="torta" />
-                        <h2>TORTA LOUCA LETICIA</h2>
-                        <CompMeal />
-                    </Link>
-                </div>
-                <div className={styles.recipes}>
-                    <Link to="/RecipeDetails/beef-pho">
-                        <img src={pho} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="sushi" />
-                        <h2>BEEF PHO</h2>
-                        <CompMeal />
-                    </Link>
-                </div>
-                <div className={styles.recipes}>
-                    <Link to="/RecipeDetails/sushi">
-                        <img src={sushi} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="pho" />
-                        <h2>SUSHI</h2>
-                        <CompMeal />
-                    </Link>
-                </div>
+            <div className={styles.header}>
+                <h1>All Recipes</h1>
+                {isAdmin && (
+                    <div className={styles.adminBar}>
+                        <button type="button" className={formStyles.primaryButton} onClick={() => setAdding(true)}>
+                            Adicionar receita
+                        </button>
+                        <button
+                            type="button"
+                            className={formStyles.secondaryButton}
+                            onClick={handleMigrar}
+                            disabled={migrating}
+                        >
+                            {migrating ? "Importando..." : "Importar receitas antigas"}
+                        </button>
+                    </div>
+                )}
+                {migrationSummary && <p className={styles.migrationSummary}>{migrationSummary}</p>}
             </div>
 
-            <div className={styles.cards}>
-                <div className={styles.recipes}>
-                    <Link to="/RecipeDetails/caldo-de-mocoto">
-                        <img src={mocoto} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="torta" />
-                        <h2>Coming Soon</h2>
-                        <CompMeal />
-                    </Link>
-                </div>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="sushi" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="pho" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-            </div>
+            <RecipeListStatus loading={loading} error={error} empty={!loading && !error && receitas.length === 0} />
 
-            <div className={styles.cards}>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="torta" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="sushi" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="pho" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-            </div>
+            {!loading && !error && receitas.length > 0 && (
+                <RecipeGrid
+                    receitas={receitas}
+                    isAdmin={isAdmin}
+                    onEdit={setEditing}
+                    onDelete={confirmAndDeleteReceita}
+                />
+            )}
 
-            <div className={styles.cards}>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="torta" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="sushi" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="pho" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-            </div>
-
-            <div className={styles.cards}>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="torta" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="sushi" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="pho" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-            </div>
-
-            <div className={styles.cards}>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="torta" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="sushi" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="pho" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-            </div>
-
-            <div className={styles.cards}>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="torta" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="sushi" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="pho" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-            </div>
-
-            <div className={styles.cards}>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="torta" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="sushi" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-                <div className={styles.recipes}>
-                    <img src={coming} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="pho" />
-                    <h2>Coming Soon</h2>
-                    <CompMeal />
-                </div>
-            </div>
-
-
+            {editing && (
+                <RecipeFormModal receita={editing} onClose={() => setEditing(null)} onSaved={() => setEditing(null)} />
+            )}
+            {adding && (
+                <RecipeFormModal onClose={() => setAdding(false)} onSaved={() => setAdding(false)} />
+            )}
         </>
-    )
+    );
 }
 
 export default Recipes;

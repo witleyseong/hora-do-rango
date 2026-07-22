@@ -1,37 +1,36 @@
-import React from "react";
-import torta from "../assets/torta.png"
-import sushi from "../assets/sushi.png"
-import pho from "../assets/beef_pho.png"
-import CompMeal from "../Meal/CompMeal"
-import { Link } from "react-router-dom"
-import styles from './Cards.module.css'
+import React, { useState } from "react";
+import RecipeGrid from "./RecipeGrid";
+import RecipeListStatus from "./RecipeListStatus";
+import { useReceitas } from "../firebase/useReceitas";
+import { useAuth } from "../firebase/AuthContext";
+import { confirmAndDeleteReceita } from "../firebase/receitasService";
+import RecipeFormModal from "../Admin/RecipeFormModal";
 
-function Cards (){
+function Cards() {
+    const { receitas, loading, error } = useReceitas();
+    const { isAdmin } = useAuth();
+    const [editing, setEditing] = useState(null);
+
+    const latest = receitas.slice(0, 3);
+
     return (
-             <div className={styles.cards}>
-                <div className={styles.recipes}>
-                    <Link to="/RecipeDetails/torta-louca">
-                        <img src={torta} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="torta" />
-                        <h2>TORTA LOUCA LETICIA</h2>
-                        <CompMeal />
-                    </Link>
-                </div>
-                <div className={styles.recipes}>
-                    <Link to="/RecipeDetails/beef-pho">
-                        <img src={pho} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="sushi" />
-                        <h2>BEEF PHO</h2>
-                        <CompMeal />
-                    </Link>
-                </div>
-                <div className={styles.recipes}>
-                    <Link to="/RecipeDetails/sushi">
-                        <img src={sushi} style={{ width: "100%", height: "220px", objectFit: "cover" }} alt="pho" />
-                        <h2>SUSHI</h2>
-                        <CompMeal />
-                    </Link>
-                </div>
-            </div>
-    )
+        <>
+            <RecipeListStatus loading={loading} error={error} empty={!loading && !error && latest.length === 0} />
+
+            {!loading && !error && latest.length > 0 && (
+                <RecipeGrid
+                    receitas={latest}
+                    isAdmin={isAdmin}
+                    onEdit={setEditing}
+                    onDelete={confirmAndDeleteReceita}
+                />
+            )}
+
+            {editing && (
+                <RecipeFormModal receita={editing} onClose={() => setEditing(null)} onSaved={() => setEditing(null)} />
+            )}
+        </>
+    );
 }
 
 export default Cards;

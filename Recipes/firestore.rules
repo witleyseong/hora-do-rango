@@ -1,0 +1,72 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.uid == "sh2o9fiSCAdRaFFaXckYlfm7LNu2";
+    }
+
+    function receitaValida(data) {
+      return data.keys().hasAll([
+          'nome',
+          'descricao',
+          'categoria',
+          'imagemUrl',
+          'tempoPreparo',
+          'rendimento',
+          'ingredientes',
+          'modoPreparo',
+          'createdAt',
+          'updatedAt'
+        ])
+        && data.keys().hasOnly([
+          'nome',
+          'descricao',
+          'categoria',
+          'imagemUrl',
+          'tempoPreparo',
+          'rendimento',
+          'ingredientes',
+          'modoPreparo',
+          'createdAt',
+          'updatedAt'
+        ])
+        && data.nome is string
+        && data.nome.size() >= 2
+        && data.nome.size() <= 120
+        && data.descricao is string
+        && data.descricao.size() <= 3000
+        && data.categoria is string
+        && data.categoria.size() <= 80
+        && data.imagemUrl is string
+        && data.imagemUrl.size() <= 1000
+        && data.tempoPreparo is string
+        && data.tempoPreparo.size() <= 100
+        && data.rendimento is string
+        && data.rendimento.size() <= 100
+        && data.ingredientes is list
+        && data.ingredientes.size() >= 1
+        && data.ingredientes.size() <= 100
+        && data.modoPreparo is list
+        && data.modoPreparo.size() >= 1
+        && data.modoPreparo.size() <= 100
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    match /receitas/{receitaId} {
+      allow read: if true;
+
+      allow create: if isAdmin()
+        && receitaValida(request.resource.data);
+
+      allow update: if isAdmin()
+        && receitaValida(request.resource.data)
+        && request.resource.data.createdAt == resource.data.createdAt;
+
+      allow delete: if isAdmin();
+    }
+  }
+}

@@ -60,6 +60,30 @@
     color: #ffffff;
 }
 
+.NavItem {
+    background: none;
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.AdminStatus {
+    align-self: center;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-primary-hover);
+}
+
+.UnauthorizedNotice {
+    text-align: center;
+    background-color: #fbeceb;
+    color: #b3261e;
+    padding: 8px;
+    margin: 0;
+    font-size: 14px;
+}
+
 @media (max-width: 640px) {
     .Wraper {
         justify-content: center;
